@@ -1,0 +1,19 @@
+# start with docker-compose up --build
+# run with sudo docker run node ls
+# attach with sudo docker attach guessnet_tensorflow_1
+
+version: '2'
+services:
+  tensorflow:
+    image: "tensorflow/tensorflow:latest"
+    ports:
+      - "6006:6006"
+    volumes:
+      - .:/code
+    command: |
+      bash -c '
+        chown -R 1000 /code
+        tensorboard --logdir /code/logs --host 0.0.0.0 --reload_interval 5 &
+        python /code/helloworld.py
+      '
+    #user: "1000"
