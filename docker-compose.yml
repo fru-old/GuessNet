@@ -14,6 +14,6 @@ services:
       bash -c '
         chown -R 1000 /code
         tensorboard --logdir /code/logs --host 0.0.0.0 --reload_interval 5 &
-        python /code/helloworld.py
+        python /code/guessnet_mark1_mnist.py
       '
     #user: "1000"
